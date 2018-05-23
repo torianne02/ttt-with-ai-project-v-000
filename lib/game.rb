@@ -2,6 +2,7 @@ require_relative "./player.rb"
 require_relative './players/computer.rb'
 require_relative './players/human.rb'
 require_relative './board.rb'
+require 'pry'
 
 class Game
   extend Players
@@ -15,7 +16,7 @@ class Game
     [2,4,6],
     [0,3,6],
     [1,4,7],
-    [2,5,8],
+    [2,5,8]
   ]
 
   def initialize(player_1=Players::Human.new("X"), player_2=Players::Human.new("O"), board=Board.new)
@@ -29,7 +30,36 @@ class Game
   end
 
   def won?
+    WIN_COMBINATIONS.each do |win_combo|
+      win_pos1 = win_combo[0]
+      win_pos2 = win_combo[1]
+      win_pos3 = win_combo[2]
+
+      board_pos1 = @board.cells[win_pos1]
+      board_pos2 = @board.cells[win_pos2]
+      board_pos3 = @board.cells[win_pos3]
+
+      if (board_pos1 == "X" && board_pos2 == "X" && board_pos3 == "X") ||
+        (board_pos1 == "O" && board_pos2 == "O" && board_pos3 == "O")
+        return [win_pos1, win_pos2, win_pos3]
+      end
+    end
+    return false
   end
+
+  def draw?
+    @board.full? && (@board.cells.all?{|cell| @board.taken?(cell)}) && !self.won?
+  end
+
+  def over?
+    self.draw? || self.won?
+  end
+
+  def winner
+    combo = self.won?
+    !combo ? nil : @board.cells[combo[0]]
+  end
+
 end
 
 g = Game.new
