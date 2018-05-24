@@ -18,41 +18,9 @@ module Players
       end
       move
     end
-<<<<<<< HEAD
-  end
-end
-
-
-
-    #   elsif board.valid_move?(input)
-    #     move = input
-    #   elsif !board.valid_move?(input)
-    #     move(board)
-    #   elsif board.full?
-    #     nil
-    #   end
-    # end
-
-    # def move(board)
-    #   move = nil
-    #   if (board.turn_count == 0 || board.turn_count == 1) && !board.taken?(5)
-    #       --> don't need this because it would happen 1st round no matter what and nobody can win with only 1 move completed
-    #     move = "5"
-    #   end
-
-=======
->>>>>>> b6717fa8eeba55d6d453f7a60c6d9378cdfdf1cd
-    # if win_combinations is possible, i.e. 1 move off --> not sure how to state this in code
-    #   move = index of open move to win  --> to either win or block
-
-    # will need to incorporate win_combinations somehow
-
     # to block:
     # check if there are any two positions that are taken with the same opposing token that is
     # lands in the win_combinations and block the third position that has not yet been
     # taken in the winning combination
-<<<<<<< HEAD
-=======
   end
 end
->>>>>>> b6717fa8eeba55d6d453f7a60c6d9378cdfdf1cd
