@@ -60,6 +60,27 @@ class Game
     !combo ? nil : @board.cells[combo[0]]
   end
 
-end
+  def turn
+      valid = false
+      while !valid
+        input = self.current_player.move(@board)
+        valid = @board.valid_move?(input)
+        if valid
+           @board.update(input, self.current_player)
+        end
+      end
+  end
 
-g = Game.new
+  def play
+    while !self.over?
+      self.turn
+    end
+
+    if self.won?
+      puts "Congratulations #{self.winner}!"
+    elsif self.draw?
+      puts "Cat's Game!"
+    end
+  end
+
+end
