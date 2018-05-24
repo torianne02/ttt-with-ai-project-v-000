@@ -66,6 +66,9 @@ class Game
         valid = @board.valid_move?(input)
         if valid
            @board.update(input, self.current_player)
+           @board.display
+        else
+          puts "Position already taken or invalid input. Try again!"
         end
       end
   end
