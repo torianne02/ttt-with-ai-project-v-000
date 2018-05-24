@@ -26,5 +26,10 @@ module Players
     #   move = index of open move to win  --> to either win or block
 
     # will need to incorporate win_combinations somehow
+
+    # to block:
+    # check if there are any two positions that are taken with the same opposing token that is
+    # lands in the win_combinations and block the third position that has not yet been
+    # taken in the winning combination
   end
 end
