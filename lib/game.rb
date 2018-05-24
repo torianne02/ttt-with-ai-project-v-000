@@ -56,8 +56,7 @@ class Game
   end
 
   def winner
-    combo = self.won?
-    !combo ? nil : @board.cells[combo[0]]
+    !self.won? ? nil : @board.cells[self.won?[0]]
   end
 
   def turn
